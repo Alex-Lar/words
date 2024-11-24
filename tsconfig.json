@@ -15,5 +15,8 @@
     "strictNullChecks": true, /* When type checking, take into account 'null' and 'undefined'. */
     "strictFunctionTypes": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": [
+    "*.ignore.ts"
+  ],
 }
