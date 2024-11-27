@@ -1,7 +1,13 @@
-import { WordsMap } from '../types'
+import { TypedWord, WordsMap } from '../types'
 
 export function getAllWords(wordsMap: WordsMap): string[] {
-  return [];
+  const words = [] as string[]
+
+  for (const typedWordArray of Object.values(wordsMap)) {
+    typedWordArray.forEach((word: TypedWord) => words.push(word.name))
+  }
+
+  return words
 }
 
 export function getUniqueWords(): string[] {
