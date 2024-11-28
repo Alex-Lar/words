@@ -9,8 +9,11 @@ export interface WordsMap {
   [key: number]: TypedWord[]
 }
 
-export interface TypedWord {
+export interface Word {
   name: string
+}
+
+export interface TypedWord extends Word {
   type: number
 }
 
