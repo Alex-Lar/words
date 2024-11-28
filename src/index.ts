@@ -1,5 +1,6 @@
 import { getIntersection, getUnion, getAllWords } from './core'
-import { Config, WordsMap } from './types'
+import { WordsMap } from '@alex-lar/words-shared-types'
+import { Config } from './types'
 
 /**
  * Represents a collection of word sets.

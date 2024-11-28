@@ -1,4 +1,4 @@
-import { TypedWord, WordsMap } from '../types'
+import { WordsMap, TypedWord } from '@alex-lar/words-shared-types'
 
 export function getAllWords(wordsMap: WordsMap): string[] {
   const words = [] as string[]
