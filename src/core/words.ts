@@ -1,4 +1,4 @@
-import { WordsMap, TypedWord } from '@alex-lar/words-shared-types'
+import { WordsMap, TypedWord, Word } from '@alex-lar/words-shared-types'
 
 export function getAllWords(wordsMap: WordsMap): string[] {
   const words = [] as string[]
@@ -10,18 +10,23 @@ export function getAllWords(wordsMap: WordsMap): string[] {
   return words
 }
 
-export function getUniqueWords(): string[] {
-  /* Returns an array of all unique words in all sets. */
-  return []
+export function getUniqueWords(wordArray: string[]): string[] {
+  return Array.from(new Set(wordArray))
 }
 
-export function getWordCount(word: string): number {
-  /* Returns the count of how many times a word appears in all sets. */
-  return 0
+export function getWordCount(wordArray: string[], word: string): number {
+  let counter = 0
+
+  for (let el of wordArray) {
+    if (word.toLowerCase() === el.toLowerCase()) counter++
+  }
+
+  return counter;
 }
 
-export function containsWord(word: string): boolean {
-  /* Returns true if a word is present in any set, false otherwise. */
+export function containsWord(wordArray: string[], word: string): boolean {
+  if (wordArray.includes(word)) true;
+
   return false
 }
 
