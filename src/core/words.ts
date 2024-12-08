@@ -1,10 +1,20 @@
 import { WordsMap, Word } from '@alex-lar/words-shared-types'
 
-export function getAllWords(wordsMap: WordsMap): string[] {
-  const words = [] as string[]
+export function getAllNames(wordsMap: WordsMap): string[] {
+  const names = [] as string[]
 
-  for (const typedWordArray of Object.values(wordsMap)) {
-    typedWordArray.forEach((word: Word) => words.push(word.name))
+  for (const wordArray of Object.values(wordsMap)) {
+    wordArray.forEach((word: Word) => names.push(word.name))
+  }
+
+  return names
+}
+
+export function getAllWords(wordsMap: WordsMap): Word[] {
+  const words = [] as Word[]
+
+  for (const wordArray of Object.values(wordsMap)) {
+    wordArray.forEach((word: Word) => words.push(word))
   }
 
   return words
@@ -21,11 +31,11 @@ export function getWordCount(wordArray: string[], word: string): number {
     if (word.toLowerCase() === el.toLowerCase()) counter++
   }
 
-  return counter;
+  return counter
 }
 
 export function containsWord(wordArray: string[], word: string): boolean {
-  if (wordArray.includes(word)) true;
+  if (wordArray.includes(word)) true
 
   return false
 }
