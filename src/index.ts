@@ -40,7 +40,6 @@ class WordsManager {
   }
 
   /* Words Management */
-
   getAllNames(): string[] {
     if (this.isEmpty()) return []
     return core.getAllNames(this.wordsMap)
@@ -53,31 +52,8 @@ class WordsManager {
 
   /* Sets Management */
 
-  /**
-   * return array of all sets
-   */
-  getAllSetsAsArray() {
+  getAllSets() {
     return core.getAllSets(this.wordsMap)
-  }
-
-  getSetSize(key: number) {
-    // Return size of set (how many words objects in that set)
-  }
-
-  getSize() {
-    // return size of words-map object (how many sets in words-map)
-  }
-
-  containsSet(key: number) {
-    /* Returns true if a set is present in the words object, false otherwise. */
-  }
-
-  getSet(key: number) {
-    /* Returns the set at a specific index in the words object. */
-  }
-
-  removeSet(setKey: number) {
-    /* Removes a set from the words object. */
   }
 
   isEmpty(): boolean {
