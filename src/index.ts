@@ -1,5 +1,5 @@
-import { getIntersection, getUnion, getAllWords } from './core'
-import { WordsMap } from '@alex-lar/words-shared-types'
+import * as core from "./core";
+import { Word, WordsMap } from '@alex-lar/words-shared-types'
 import { Config } from './types'
 
 /**
@@ -7,9 +7,9 @@ import { Config } from './types'
  *
  * Provides methods for manipulating and querying multiple word sets.
  *
- * @class Words
+ * @class WordsManager
  */
-class Words {
+class WordsManager {
   private wordsMap: WordsMap
 
   constructor(config?: Config) {
@@ -22,35 +22,84 @@ class Words {
   }
 
   static getIntersection(firstArray: string[], secondArray: string[]): string[] {
-    return getIntersection(firstArray, secondArray)
+    return core.getIntersection(firstArray, secondArray)
   }
 
   static getUnion(firstArray: string[], secondArray: string[]): string[] {
-    return getUnion(firstArray, secondArray)
+    return core.getUnion(firstArray, secondArray)
   }
 
   getIntersection(array: string[]): string[] {
-    const allWordsArray = this.getAllWords()
-    return getIntersection(allWordsArray, array)
+    const namesArray = this.getAllNames()
+    return core.getIntersection(namesArray, array)
   }
 
   getUnion(array: string[]): string[] {
-    const allWordsArray = this.getAllWords()
-    return getUnion(allWordsArray, array)
+    const namesArray = this.getAllNames()
+    return core.getUnion(namesArray, array)
   }
 
-  getAllWords(): string[] {
+  /* Words Management */
+
+  getAllNames(): string[] {
     if (this.isEmpty()) return []
-    return getAllWords(this.wordsMap)
+    return core.getAllNames(this.wordsMap)
+  }
+
+  getAllWords(): Word[] {
+    if (this.isEmpty()) return []
+    return core.getAllWords(this.wordsMap)
+  }
+
+  /* Sets Management */
+
+  /**
+   * return array of all sets
+   */
+  getAllSetsAsArray() {
+    return core.getAllSets(this.wordsMap)
+  }
+
+  getSetSize(key: number) {
+    // Return size of set (how many words objects in that set)
+  }
+
+  getSize() {
+    // return size of words-map object (how many sets in words-map)
+  }
+
+  containsSet(key: number) {
+    /* Returns true if a set is present in the words object, false otherwise. */
+  }
+
+  getSet(key: number) {
+    /* Returns the set at a specific index in the words object. */
+  }
+
+  removeSet(setKey: number) {
+    /* Removes a set from the words object. */
   }
 
   isEmpty(): boolean {
-    if (Object.keys(this.wordsMap).length === 0 && this.wordsMap.constructor === Object) {
-      return true
+    return Object.keys(this.wordsMap).length === 0
+  }
+
+  // Json/File utility
+  async getJson(): Promise<string> {
+    return JSON.stringify(this.wordsMap)
+  }
+
+  async createJsonFile(name: string): Promise<void> {
+    if (typeof name !== 'string' || !name.trim()) {
+      throw new Error('Invalid file name')
     }
 
-    return false
+    try {
+      await core.createFile(name, '.json', await this.getJson())
+    } catch (e) {
+      console.log('Error creating JSON file: ', e)
+    }
   }
 }
 
-export default Words
+export default WordsManager
