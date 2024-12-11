@@ -36,11 +36,11 @@ const wm2 = {
 const unionArray = ['a', 'b', 'BB', 'aaa', 'bbb', 'aaaa', 'bbbb', 'AAAAA', 'c', 'd', 'e', 'f']
 const intersectionArray = ['BB', 'AAAAA']
 
-const w1 = new WordsManager({ wordsMap: wm1 })
-const w2 = new WordsManager({ wordsMap: wm2 })
+const w1 = new WordsManager(wm1)
+const w2 = new WordsManager(wm2)
 
-const w1Array = w1.getAllNames()
-const w2Array = w2.getAllNames()
+const w1Array = w1.getNames()
+const w2Array = w2.getNames()
 
 describe('Set Management Tests', () => {
   test('getAllSets returns all sets', () => {})
@@ -57,8 +57,8 @@ describe('Word Management Tests', () => {
     expect(getAllNames(wm2)).toEqual(expect.arrayContaining(wm2Array))
 
     // Object method
-    expect(w1.getAllNames()).toEqual(expect.arrayContaining(wm1Array))
-    expect(w2.getAllNames()).toEqual(expect.arrayContaining(wm2Array))
+    expect(w1.getNames()).toEqual(expect.arrayContaining(wm1Array))
+    expect(w2.getNames()).toEqual(expect.arrayContaining(wm2Array))
   })
 })
 
