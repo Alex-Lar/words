@@ -1,3 +1,3 @@
 **words-manager**
 
-Package that allows you to easily manipulate sets of words
+Using the WordsManager package, you can create large word structures on the fly and save them in a separate JSON file.
