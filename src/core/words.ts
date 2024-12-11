@@ -20,22 +20,22 @@ export function getAllWords(wordsMap: WordsMap): Word[] {
   return words
 }
 
-export function getUniqueWords(wordArray: string[]): string[] {
+export function getUniqueNames(wordArray: string[]): string[] {
   return Array.from(new Set(wordArray))
 }
 
-export function getWordCount(wordArray: string[], word: string): number {
+export function getNameCount(nameArray: string[], name: string): number {
   let counter = 0
 
-  for (let el of wordArray) {
-    if (word.toLowerCase() === el.toLowerCase()) counter++
+  for (let el of nameArray) {
+    if (name.toLowerCase() === el.toLowerCase()) counter++
   }
 
   return counter
 }
 
-export function containsWord(wordArray: string[], word: string): boolean {
-  if (wordArray.includes(word)) true
+export function hasName(nameArray: string[], name: string): boolean {
+  if (nameArray.includes(name)) true
 
   return false
 }
